@@ -21,11 +21,24 @@
     <!-- MAIN CSS -->
     <link rel="stylesheet" href="css/style.css">
 
+    <script>
+      function checkIfLoggedIn() {
+        if (localStorage.getItem("username") == "" && localStorage.getItem("password") == "") {
+          let logout = document.getElementById("logout")
+          logout.className = " "
+          login = document.getElementById("login")
+          login.className = "d-none"
+        } else {
+          let logout = document.getElementById("logout")
+          logout.className = "d-none"
+          login = document.getElementById("login")
+          login.className = " "
+        }
+      }
+    </script>
   </head>
 
-  <body>
-
-    
+  <body onclick="checkIfLoggedIn()">
     <div class="site-wrap" id="home-section">
 
       <div class="site-mobile-menu site-navbar-target">
@@ -60,7 +73,8 @@
                   <li class="active"><a href="listing.html" class="nav-link">Listing</a></li>
                   <li><a href="about.html" class="nav-link">About</a></li>
                   <li><a href="contact.html" class="nav-link">Contact</a></li>
-                  <li><a href="login.html" class="nav-link">Login</a></li>
+                  <li><a class="" href="login.html" class="nav-link" id="login ">Login</a> 
+                    <a class="d-none" href="#" class="nav-link" id="logout" onclick="localStorage.clear(); alert('You have logged out!'); window.location.replace('index.html')">Logout</a></li>
                 </ul>
               </nav>
             </div>

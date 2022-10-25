@@ -20,12 +20,19 @@
 
     <!-- MAIN CSS -->
     <link rel="stylesheet" href="css/style.css">
+    
+    <script>
+      function checkLogin() {
+      if (localStorage.getItem("username") == "" && localStorage.getItem("password") == "") {
+        console.log(localStorage.getItem("username"))
+        window.location.replace("listing.html")
+      }
+    }
+    </script>
 
   </head>
 
-  <body>
-
-    
+  <body onload="checkLogin()">
     <div class="site-wrap" id="home-section">
 
       <div class="site-mobile-menu site-navbar-target">

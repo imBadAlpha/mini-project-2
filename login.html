@@ -37,8 +37,9 @@
     }
 
     function usernameCheck() {
+      let usr = localStorage.getItem("usr")
       username = document.forms["myForm"]["username"].value;
-      if (username == "admin") {
+      if (username == usr) {
         helpIdAlertOff("usernameHelpId")
         return true
       } else {
@@ -48,8 +49,10 @@
     }
 
     function passwordCheck() {
+      let pw = localStorage.getItem("pw")
+      console.log(localStorage.getItem("pw"))
       password = document.forms["myForm"]["password"].value;
-      if (password == "admin123") {
+      if (password == pw) {
         helpIdAlertOff("passwordHelpId")
         return true
       } else {
@@ -64,30 +67,17 @@
 
       if (usernameChecked && pwChecked) {
         alert("Login Successful!")
-        window.location.replace("home.html")
-      }
-    }
-
-    function lsRememberMe() {
-      if (document.getElementById('rememberMe').checked && username !== "" && password !== "") {
         localStorage.setItem("username", username)
         localStorage.setItem("password", password)
-        // localStorage.username = username.value;
-        // localStorage.password = password.value;
-        // localStorage.checkbox = rmCheck.value;
-      } else {
-        localStorage.setItem("username", "")
-        localStorage.setItem("password", "")
-        // localStorage.username = "";
-        // localStorage.password = "";
-        // localStorage.checkbox = "";
+        window.location.replace("listing.html")
+        
       }
     }
 
     function checkLogin() {
       if (localStorage.getItem("username") == "" && localStorage.getItem("password") == "") {
         console.log(localStorage.getItem("username"))
-        window.location.replace("home.html")
+        window.location.replace("listing.html")
       }
     }
 
@@ -95,8 +85,7 @@
   <title>QuikRide - Login</title>
 </head>
 
-<body onload="">
-
+<body onload="checkLogin()">
   <div class="site-wrap" id="home-section">
 
     <div class="site-mobile-menu site-navbar-target">
@@ -146,7 +135,7 @@
                 <h1>Login</h1>
                 <form name="myForm" method="post" onsubmit="validateForm(); return false;">
                   <div class="mb-3">
-                    <label for="username" class="form-label">Username</label>
+                    <label for="username" class="form-label">Email</label>
                     <input type="text" class="form-control" name="username" id="username"
                       aria-describedby="usernameHelpId" placeholder="Please enter username">
                     <small id="usernameHelpId" class="form-text text-danger d-none">* Username is not valid</small>
@@ -156,12 +145,6 @@
                     <input type="password" class="form-control" name="password" id="password"
                       aria-describedby="passwordHelpId" placeholder="Please enter password">
                     <small id="passwordHelpId" class="form-text text-danger d-none">* Password is not valid</small>
-                  </div>
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="rememberMe" onclick="lsRememberMe()">
-                    <label class="form-check-label" for="rememberMe">
-                      Remember Me
-                    </label>
                   </div>
                   <div class="d-flex justify-content-center">
                     <input type="submit"

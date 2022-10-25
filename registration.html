@@ -184,26 +184,16 @@
       let checkedEmail = checkEmail();
       let checkedMobile = checkMobilenum();
 
-      // if (checkedFName && checkedLName && checkedPW && checkedPWconf && checkedEmail && checkedMobile) {
-      //   let foot = document.getElementById("foot")
-      //   foot.className = "container mt-3"
-      //   let firstname = document.forms["myForm"]["firstname"].value;
-      //   document.getElementById("fname").innerHTML = firstname
-      //   let lastname = document.forms["myForm"]["lastname"].value;
-      //   document.getElementById("lname").innerHTML = lastname
-      //   let email = document.forms["myForm"]["email"].value;
-      //   document.getElementById("email2").innerHTML = email
-      //   let mobile = document.forms["myForm"]["mobile_num"].value;
-      //   document.getElementById("mobile").innerHTML = "+63" + mobile
-
-      //   let password = document.forms["myForm"]["password"].value
-      //   let pw = ""
-      //   for (let i = 0; i < password.length; i++) {
-      //     pw += "*"
-      //   }
-
-      //   document.getElementById("pw").innerHTML = pw
-      // }
+      if (checkedFName && checkedLName && checkedPW && checkedPWconf && checkedEmail && checkedMobile) {
+        let username = document.forms["myForm"]["email"].value;
+        localStorage.setItem("usr", username)
+        let password = document.forms["myForm"]["password"].value;
+        localStorage.setItem("pw", password)
+        let firstname = document.forms["myForm"]["firstname"]
+        localStorage.setItem("firstname", firstname )
+        alert("Successfully Registered!")
+        window.location.replace("login.html")
+      }
       return false
     }
 
