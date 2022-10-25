@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+
+  <link rel="stylesheet" href="fonts/icomoon/style.css">
+
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+  <link rel="stylesheet" href="css/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="css/owl.carousel.min.css">
+  <link rel="stylesheet" href="css/owl.theme.default.min.css">
+  <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+  <link rel="stylesheet" href="css/aos.css">
+
+  <!-- MAIN CSS -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <script>
+    let username = ""
+    let password = ""
+
+    function helpIdAlertOn(helpIdName) {
+      let HelpId = document.getElementById(helpIdName)
+      HelpId.className = "form-text text-danger"
+    }
+
+    function helpIdAlertOff(helpIdName) {
+      let HelpId = document.getElementById(helpIdName)
+      HelpId.className = "form-text text-danger d-none"
+    }
+
+    function usernameCheck() {
+      username = document.forms["myForm"]["username"].value;
+      if (username == "admin") {
+        helpIdAlertOff("usernameHelpId")
+        return true
+      } else {
+        helpIdAlertOn("usernameHelpId")
+        return false
+      }
+    }
+
+    function passwordCheck() {
+      password = document.forms["myForm"]["password"].value;
+      if (password == "admin123") {
+        helpIdAlertOff("passwordHelpId")
+        return true
+      } else {
+        helpIdAlertOn("passwordHelpId")
+        return false
+      }
+    }
+
+    function validateForm() {
+      let usernameChecked = usernameCheck()
+      let pwChecked = passwordCheck()
+
+      if (usernameChecked && pwChecked) {
+        alert("Login Successful!")
+        window.location.replace("home.html")
+      }
+    }
+
+    function lsRememberMe() {
+      if (document.getElementById('rememberMe').checked && username !== "" && password !== "") {
+        localStorage.setItem("username", username)
+        localStorage.setItem("password", password)
+        // localStorage.username = username.value;
+        // localStorage.password = password.value;
+        // localStorage.checkbox = rmCheck.value;
+      } else {
+        localStorage.setItem("username", "")
+        localStorage.setItem("password", "")
+        // localStorage.username = "";
+        // localStorage.password = "";
+        // localStorage.checkbox = "";
+      }
+    }
+
+    function checkLogin() {
+      if (localStorage.getItem("username") == "" && localStorage.getItem("password") == "") {
+        console.log(localStorage.getItem("username"))
+        window.location.replace("home.html")
+      }
+    }
+
+  </script>
+  <title>Login</title>
+</head>
+
+<body onload="">
+
+  <div class="site-wrap" id="home-section">
+
+    <div class="site-mobile-menu site-navbar-target">
+      <div class="site-mobile-menu-header">
+        <div class="site-mobile-menu-close mt-3">
+          <span class="icon-close2 js-menu-toggle"></span>
+        </div>
+      </div>
+      <div class="site-mobile-menu-body"></div>
+    </div>
+
+
+
+    <header class="site-navbar site-navbar-target" role="banner">
+
+      <div class="container">
+        <div class="row align-items-center position-relative">
+
+          <div class="col-3">
+            <div class="site-logo">
+              <a href="index.html"><strong>QuikRide</strong></a>
+            </div>
+          </div>
+
+          <div class="col-9  text-right">
+            
+            <span class="d-inline-block d-lg-none"><a href="#" class=" site-menu-toggle js-menu-toggle py-5 "><span class="icon-menu h3 text-black"></span></a></span>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+
+    </header>
+  </div>
+
+  <section class="vh-100 bg-image"
+    style="background-image: url('https://mdbcdn.b-cdn.net/img/Photos/new-templates/search-box/img4.webp');">
+    <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+      <div class="container h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+            <div class="card" style="border-radius: 15px;">
+              <div class="card-body p-5">
+                <h1>Login</h1>
+                <form name="myForm" method="post" onsubmit="validateForm(); return false;">
+                  <div class="mb-3">
+                    <label for="username" class="form-label">Username</label>
+                    <input type="text" class="form-control" name="username" id="username"
+                      aria-describedby="usernameHelpId" placeholder="Please enter username">
+                    <small id="usernameHelpId" class="form-text text-danger d-none">* Username is not valid</small>
+                  </div>
+                  <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control" name="password" id="password"
+                      aria-describedby="passwordHelpId" placeholder="Please enter password">
+                    <small id="passwordHelpId" class="form-text text-danger d-none">* Password is not valid</small>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="rememberMe" onclick="lsRememberMe()">
+                    <label class="form-check-label" for="rememberMe">
+                      Remember Me
+                    </label>
+                  </div>
+                  <div class="d-flex justify-content-center">
+                    <input type="submit"
+                      class="btn btn-success btn-block btn-lg gradient-custom-4 text-body" value="Login">
+                  </div>
+
+                  <p class="text-center text-muted mt-5 mb-0">Don't have an account? <a href="registration.html"
+                      class="fw-bold text-body"><u>Register here</u></a></p>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+
+</html>

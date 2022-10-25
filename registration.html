@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+
+  <link rel="stylesheet" href="fonts/icomoon/style.css">
+
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+  <link rel="stylesheet" href="css/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="css/owl.carousel.min.css">
+  <link rel="stylesheet" href="css/owl.theme.default.min.css">
+  <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+  <link rel="stylesheet" href="css/aos.css">
+
+  <!-- MAIN CSS -->
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    #reg {
+      text-align: center;
+      position: relative;
+      margin: 5% auto;
+      width: 600px;
+      height: 400px;
+      background: #FFF;
+      border-radius: 2px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    }
+
+    .left {
+      position: absolute;
+      top: 0;
+      left: 0;
+      box-sizing: border-box;
+      padding: 40px;
+      width: 300px;
+      height: 400px;
+    }
+  </style>
+
+  <script>
+    function helpIdAlertOn(helpIdName) {
+      let HelpId = document.getElementById(helpIdName)
+      HelpId.className = "form-text text-danger"
+    }
+
+    function helpIdAlertOff(helpIdName) {
+      let HelpId = document.getElementById(helpIdName)
+      HelpId.className = "form-text text-danger d-none"
+    }
+
+    function checkFirstname() {
+      var has_digit = false
+      let firstname = document.forms["myForm"]["firstname"].value;
+      for (let i = 0; i < firstname.length; i++) {
+        if ("0123456789".includes(firstname.charAt(i))) {
+          has_digit = true
+        }
+      }
+
+      if (has_digit == true) {
+        alert("First Name has digits")
+        helpIdAlertOn("fnamehelpId")
+        return false
+      } else {
+        helpIdAlertOff("fnamehelpId")
+        return true
+      }
+    }
+
+    function checkLastname() {
+      var has_digit = false
+      let lastname = document.forms["myForm"]["lastname"].value;
+      for (let i = 0; i < lastname.length; i++) {
+        if ("0123456789".includes(lastname.charAt(i))) {
+          has_digit = true
+        }
+      }
+
+      if (has_digit == true) {
+        alert("Last Name has digits")
+        helpIdAlertOn("lnamehelpId")
+        return false
+      } else {
+        helpIdAlertOff("lnamehelpId")
+        return true
+      }
+    }
+
+    function checkPassword() {
+      console.log("Function read")
+      var has_no_digits = true
+      let password = document.forms["myForm"]["password"].value
+
+      if (password.length < 6) {
+        alert("Password is less than 6 characters long...")
+        helpIdAlertOn("pwHelpId")
+        return false
+      } else {
+        for (let i = 0; i < password.length; i++) {
+          if ("0123456789".includes(password.charAt(i))) {
+            has_no_digits = false
+          }
+        }
+
+      }
+
+      if (has_no_digits == true) {
+        alert("Password have no digits")
+        helpIdAlertOn("pwHelpId")
+        return false
+      } else {
+        helpIdAlertOff("pwHelpId")
+        return true
+      }
+    }
+
+    function confirmPassword() {
+      let password = document.forms["myForm"]["password"].value
+      let password_conf = document.forms["myForm"]["password_conf"].value
+
+      if (password_conf != password) {
+        alert("Confirm Password does not match to your Password.")
+        helpIdAlertOn("pw_conHelpId")
+        return false
+      } else {
+        helpIdAlertOff("pw_conHelpId")
+        return true
+      }
+    }
+
+    function checkEmail() {
+      var has_space = false
+      let email = document.forms["myForm"]["email"].value
+      for (let i = 0; i < email.length; i++) {
+        if (" ".includes(email.charAt(i))) {
+          has_space = true
+        }
+      }
+
+      if (has_space) {
+        alert("Your email has space/s in it...")
+        helpIdAlertOn("emailHelpId")
+        return false
+      } else {
+        helpIdAlertOff("emailHelpId")
+        return true
+      }
+    }
+
+    function checkMobilenum() {
+      var has_letter = false
+      let mobile_num = document.forms["myForm"]["mobile_num"].value
+      mobile_num = mobile_num.toLowerCase()
+      for (let i = 0; i < mobile_num.length; i++) {
+        if ("qwertyuiopasdfghjklzxcvbnm".includes(mobile_num.charAt(i))) {
+          has_letter = true
+        }
+      }
+
+      if (has_letter) {
+        alert("Your mobile number has letters in it...")
+        let mobileHelp = document.getElementById("mobileHelpId")
+        mobileHelp.className = "form-text text-danger"
+        return false
+      } else {
+        let mobileHelp = document.getElementById("mobileHelpId")
+        mobileHelp.className = "form-text text-danger d-none"
+        return true
+      }
+    }
+
+    function validateForm() {
+      let checkedFName = checkFirstname();
+      let checkedLName = checkLastname();
+      let checkedPW = checkPassword();
+      let checkedPWconf = confirmPassword();
+      let checkedEmail = checkEmail();
+      let checkedMobile = checkMobilenum();
+
+      // if (checkedFName && checkedLName && checkedPW && checkedPWconf && checkedEmail && checkedMobile) {
+      //   let foot = document.getElementById("foot")
+      //   foot.className = "container mt-3"
+      //   let firstname = document.forms["myForm"]["firstname"].value;
+      //   document.getElementById("fname").innerHTML = firstname
+      //   let lastname = document.forms["myForm"]["lastname"].value;
+      //   document.getElementById("lname").innerHTML = lastname
+      //   let email = document.forms["myForm"]["email"].value;
+      //   document.getElementById("email2").innerHTML = email
+      //   let mobile = document.forms["myForm"]["mobile_num"].value;
+      //   document.getElementById("mobile").innerHTML = "+63" + mobile
+
+      //   let password = document.forms["myForm"]["password"].value
+      //   let pw = ""
+      //   for (let i = 0; i < password.length; i++) {
+      //     pw += "*"
+      //   }
+
+      //   document.getElementById("pw").innerHTML = pw
+      // }
+      return false
+    }
+
+  </script>
+  <title>Registration</title>
+
+</head>
+
+<body>
+
+  <div class="site-wrap" id="home-section">
+
+    <div class="site-mobile-menu site-navbar-target">
+      <div class="site-mobile-menu-header">
+        <div class="site-mobile-menu-close mt-3">
+          <span class="icon-close2 js-menu-toggle"></span>
+        </div>
+      </div>
+      <div class="site-mobile-menu-body"></div>
+    </div>
+
+
+
+    <header class="site-navbar site-navbar-target" role="banner">
+
+      <div class="container">
+        <div class="row align-items-center position-relative">
+
+          <div class="col-3">
+            <div class="site-logo">
+              <a href="index.html"><strong>QuikRide</strong></a>
+            </div>
+          </div>
+
+          <div class="col-9  text-right">
+            
+            <span class="d-inline-block d-lg-none"><a href="#" class=" site-menu-toggle js-menu-toggle py-5 "><span class="icon-menu h3 text-black"></span></a></span>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+
+    </header>
+  </div>
+
+  <section class="vh-100 bg-image"
+    style="background-image: url('https://mdbcdn.b-cdn.net/img/Photos/new-templates/search-box/img4.webp');">
+    <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+      <div class="container h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+            <div class="card" style="border-radius: 15px;">
+              <div class="card-body p-5">
+                <h2 class="text-center mb-5">Create an account</h2>
+                <form name="myForm" onsubmit="validateForm(); return false;" method="GET">
+                  <div class="mb-3">
+                    <label for="firstname" class="form-label">First Name</label>
+                    <input type="text" class="form-control" name="firstname" id="firstname"
+                      aria-describedby="fnamehelpId" placeholder="Juan" required>
+                    <small id="fnamehelpId" class="form-text text-danger d-none">* Should not contain any
+                      numbers</small>
+                  </div>
+                  <div class="mb-3">
+                    <label for="lastname" class="form-label">Last Name</label>
+                    <input type="text" class="form-control" name="lastname" id="lastname"
+                      aria-describedby="lnamehelpId" placeholder="De la Cruz" required>
+                    <small id="lnamehelpId" class="form-text text-danger d-none">* Should not contain any
+                      numbers</small>
+                  </div>
+                  <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input type="password" class="form-control" name="password" id="password"
+                      placeholder="Should contain at least 1 number and at least 6 characters long" required>
+                    <small id="pwHelpId" class="form-text text-danger d-none">* Password should contain at least one
+                      number, and at least 6 characters long.</small>
+
+                  </div>
+                  <div class="mb-3">
+                    <label for="password_conf" class="form-label">Confirm Password</label>
+                    <input type="password" class="form-control" name="password_conf" id="password_conf"
+                      placeholder="Please confirm password." required>
+                    <small id="pw_conHelpId" class="form-text text-danger d-none">* Should be similar to
+                      Password.</small>
+                  </div>
+                  <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelpId"
+                      placeholder="abc@mail.com" required>
+                    <small id="emailHelpId" class="form-text text-danger d-none">* Please enter a valid email</small>
+                  </div>
+                  <div class="mb-3">
+                    <label for="mobile_num">Mobile Number</label>
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <div class="input-group-text">+63</div>
+                      </div>
+                      <input type="text" class="form-control" id="mobile_num" placeholder="9*********" maxlength="10"
+                        required>
+                    </div>
+                    <small id="mobileHelpId" class="form-text text-danger d-none">* Mobile Number should have no
+                      letters on it</small>
+                  </div>
+
+                  <div class="d-flex justify-content-center">
+                    <input type="submit" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body"
+                      value="Register">
+                  </div>
+
+                  <p class="text-center text-muted mt-5 mb-0">Have already an account? <a href="login.html"
+                      class="fw-bold text-body"><u>Login here</u></a></p>
+
+                </form>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+
+</html>
