@@ -23,22 +23,28 @@
 
     <script>
       function checkIfLoggedIn() {
-        if (localStorage.getItem("username") == "" && localStorage.getItem("password") == "") {
-          let logout = document.getElementById("logout")
-          logout.className = " "
-          login = document.getElementById("login")
-          login.className = "d-none"
+        console.log("Hello")
+        if (localStorage.getItem("username") != "" && localStorage.getItem("password") != "") {
+          document.getElementById("logout").className = ""
+          document.getElementById("login").className = "d-none"
         } else {
           let logout = document.getElementById("logout")
           logout.className = "d-none"
-          login = document.getElementById("login")
-          login.className = " "
+          let login = document.getElementById("login")
+          login.className = ""
         }
+      }
+
+      function logout() {
+        localStorage.setItem("username", "")
+        localStorage.setItem("password", "")
+        alert('You have logged out!')
+        window.location.replace('index.html')
       }
     </script>
   </head>
 
-  <body onclick="checkIfLoggedIn()">
+  <body onload="checkIfLoggedIn()">
     <div class="site-wrap" id="home-section">
 
       <div class="site-mobile-menu site-navbar-target">
@@ -73,13 +79,32 @@
                   <li class="active"><a href="listing.html" class="nav-link">Listing</a></li>
                   <li><a href="about.html" class="nav-link">About</a></li>
                   <li><a href="contact.html" class="nav-link">Contact</a></li>
-                  <li><a class="" href="login.html" class="nav-link" id="login ">Login</a> 
-                    <a class="d-none" href="#" class="nav-link" id="logout" onclick="localStorage.clear(); alert('You have logged out!'); window.location.replace('index.html')">Logout</a></li>
+                  <li><a class="d-none" href="login.html" class="nav-link" id="login">Login</a> 
+                    <a class="" href="#" class="nav-link" id="logout" onclick="logout()" >Logout</a>
+                  </li>
                 </ul>
               </nav>
             </div>
 
             
+          </div>
+        </div>
+
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                ...
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+              </div>
+            </div>
           </div>
         </div>
 

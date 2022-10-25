@@ -23,7 +23,7 @@
     
     <script>
       function checkLogin() {
-      if (localStorage.getItem("username") == "" && localStorage.getItem("password") == "") {
+      if (localStorage.getItem("username") != "" && localStorage.getItem("password") != "") {
         console.log(localStorage.getItem("username"))
         window.location.replace("listing.html")
       }
