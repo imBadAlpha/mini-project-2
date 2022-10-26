@@ -11,6 +11,10 @@
 body {
     padding: 15px;
     background-color: #ddc3c3;
+    -moz-background-size: cover;
+    -webkit-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
 .container {
