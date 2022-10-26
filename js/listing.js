@@ -13,14 +13,14 @@ function checkIfLoggedIn() {
       localStorage.getItem("firstname") +
       " " +
       localStorage.getItem("lastname");
-    if (localStorage.getItem("location") != " ") {
+    if (localStorage.getItem("location") != "") {
       let loc = localStorage.getItem("location")
       console.log(loc);
       document.getElementById("car_listings").innerHTML =
         "Here are the cars available for rent in " +
         loc +
         "!";
-      localStorage.setItem("location", " ")
+      localStorage.setItem("location", "")
     } else {
       document.getElementById("car_listings").innerHTML = " " 
     }
@@ -30,14 +30,14 @@ function checkIfLoggedIn() {
     document.getElementById("about").className = "";
     document.getElementById("contact").className = "";
     document.getElementById("home").className = "";
-    if (localStorage.getItem("location") != " ") {
+    if (localStorage.getItem("location") != "") {
       let loc = localStorage.getItem("location")
       console.log(loc);
       document.getElementById("car_listings").innerHTML =
         "Here are the cars available for rent in " +
         loc +
         "!";
-      localStorage.setItem("location", " ")
+      localStorage.setItem("location", "")
     } else {
       document.getElementById("car_listings").innerHTML = " " 
     }

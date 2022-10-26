@@ -44,6 +44,7 @@ function validateForm() {
     alert("Login Successful!");
     localStorage.setItem("username", username);
     localStorage.setItem("password", password);
+    localStorage.setItem("location", "")
     window.location.replace("listing.html");
   } else {
     localStorage.setItem("username", " ");
