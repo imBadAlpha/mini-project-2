@@ -2,7 +2,7 @@
 <html lang="en">
 
   <head>
-    <title>QuikRide  </title>
+    <title>QuikRide - Listings </title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -21,27 +21,8 @@
     <!-- MAIN CSS -->
     <link rel="stylesheet" href="css/style.css">
 
-    <script>
-      function checkIfLoggedIn() {
-        console.log("Hello")
-        if (localStorage.getItem("username") != "" && localStorage.getItem("password") != "") {
-          document.getElementById("logout").className = ""
-          document.getElementById("login").className = "d-none"
-        } else {
-          let logout = document.getElementById("logout")
-          logout.className = "d-none"
-          let login = document.getElementById("login")
-          login.className = ""
-        }
-      }
-
-      function logout() {
-        localStorage.setItem("username", "")
-        localStorage.setItem("password", "")
-        alert('You have logged out!')
-        window.location.replace('index.html')
-      }
-    </script>
+    <script src="js/listing.js"></script>
+    <link rel="stylesheet" href="css/dropdown.css">
   </head>
 
   <body onload="checkIfLoggedIn()">
@@ -65,7 +46,7 @@
 
             <div class="col-3">
               <div class="site-logo">
-                <a href="index.html"><strong>CarRental</strong></a>
+                <a href="index.html"><strong>QuikRide</strong></a>
               </div>
             </div>
 
@@ -79,37 +60,21 @@
                   <li class="active"><a href="listing.html" class="nav-link">Listing</a></li>
                   <li><a href="about.html" class="nav-link">About</a></li>
                   <li><a href="contact.html" class="nav-link">Contact</a></li>
-                  <li><a class="d-none" href="login.html" class="nav-link" id="login">Login</a> 
-                    <a class="" href="#" class="nav-link" id="logout" onclick="logout()" >Logout</a>
+                  <li><a class="d-none" href="login.html" class="nav-link" id="login">Login</a> </li>
+                  <li class="dropdown d-none" id="drop"><a href="#"><span id="name"></span> <i class="bi bi-chevron-down"></i></a>
+                    <ul>
+                      <li><a href="#">Account Settings</a></li>
+                      <li><a class="" href="#" class="nav-link" id="logout" onclick="logout()" >Logout</a></a></li>
+                    </ul>
                   </li>
                 </ul>
               </nav>
             </div>
-
             
           </div>
         </div>
 
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-              </div>
-              <div class="modal-body">
-                ...
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-              </div>
-            </div>
-          </div>
-        </div>
-
       </header>
-
       
       <div class="hero inner-page" style="background-image: url('images/hero_1_a.jpg');">
         
@@ -126,18 +91,53 @@
           </div>
         </div>
       </div>
-  
 
 
+      <form class="trip-form" name="myForm" onsubmit="saveLocation()">
+                
+        <div class="row align-items-center">
+          <div class="mb-3 mb-md-0 col-md-3">
+            <div class="form-control-wrap">
+              <input type="text" id="cf-3" name="location" placeholder="Location" class="form-control px-3">
+              <span class="bi bi-geo-alt"></span>
 
-      
+            </div>
+          </div>
+          
+          <div class="mb-3 mb-md-0 col-md-2">
+            <select name="car" id="car" class="custom-select form-control">
+              <option value="">Select Type</option>
+              <option value="">Ferrari</option>
+              <option value="">Toyota</option>
+              <option value="">Ford</option>
+              <option value="">Lamborghini</option>
+            </select>
+          </div>
+          <div class="mb-3 mb-md-0 col-md-2">
+            <div class="form-control-wrap">
+              <input type="text" id="cf-3" placeholder="Pick up" class="form-control datepicker px-3">
+              <span class="icon icon-date_range"></span>
+
+            </div>
+          </div>
+          <div class="mb-3 mb-md-0 col-md-2">
+            <div class="form-control-wrap">
+              <input type="text" id="cf-4" placeholder="Drop off" class="form-control datepicker px-3">
+              <span class="icon icon-date_range"></span>
+            </div>
+          </div>
+          <div class="mb-3 mb-md-0 col-md-3">
+            <input type="submit" value="Search Now" class="btn btn-primary btn-block py-3">
+          </div>
+        </div> 
+      </form>
 
     <div class="site-section bg-light">
       <div class="container">
         <div class="row">
           <div class="col-lg-7">
-            <h2 class="section-heading"><strong>Car Listings</strong></h2>
-            <p class="mb-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>    
+            <h2 class="section-heading mb-2" ><strong>Car Listings</strong></h2>
+            <h3 class="mb-5" id="car_listings"> </h3>    
           </div>
         </div>
         

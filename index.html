@@ -2,7 +2,7 @@
 <html lang="en">
 
   <head>
-    <title>CarRental - Home</title>
+    <title>QuikRide - Home</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -21,14 +21,9 @@
     <!-- MAIN CSS -->
     <link rel="stylesheet" href="css/style.css">
     
-    <script>
-      function checkLogin() {
-      if (localStorage.getItem("username") != "" && localStorage.getItem("password") != "") {
-        console.log(localStorage.getItem("username"))
-        window.location.replace("listing.html")
-      }
-    }
-    </script>
+    <script src="js/index.js"></script>
+
+    <link rel="stylesheet" href="css/dropdown.css">
 
   </head>
 
@@ -71,8 +66,6 @@
                 </ul>
               </nav>
             </div>
-
-            
           </div>
         </div>
 
@@ -91,19 +84,19 @@
                 </div>
               </div>
               
-              <form class="trip-form">
+              <form class="trip-form" method="post" name="myForm" onsubmit="saveLocation(); return false;">
                 
                 <div class="row align-items-center">
                   <div class="mb-3 mb-md-0 col-md-3">
                     <div class="form-control-wrap">
-                      <input type="text" id="cf-3" placeholder="Location" class="form-control px-3">
+                      <input type="text" id="cf-3" name="location" placeholder="Location" class="form-control px-3">
                       <span class="bi bi-geo-alt"></span>
 
                     </div>
                   </div>
                   
                   <div class="mb-3 mb-md-0 col-md-2">
-                    <select name="" id="" class="custom-select form-control">
+                    <select name="car" id="car" class="custom-select form-control">
                       <option value="">Select Type</option>
                       <option value="">Ferrari</option>
                       <option value="">Toyota</option>
