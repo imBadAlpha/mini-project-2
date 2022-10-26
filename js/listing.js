@@ -6,6 +6,9 @@ function checkIfLoggedIn() {
   ) {
     document.getElementById("drop").className = "dropdown";
     document.getElementById("login").className = "d-none";
+    document.getElementById("about").className = "d-none";
+    document.getElementById("contact").className = "d-none";
+    document.getElementById("home").className = "d-none";
     document.getElementById("name").innerHTML =
       localStorage.getItem("firstname") +
       " " +
@@ -24,6 +27,9 @@ function checkIfLoggedIn() {
   } else {
     document.getElementById("drop").className = "dropdown d-none";
     document.getElementById("login").className = "";
+    document.getElementById("about").className = "";
+    document.getElementById("contact").className = "";
+    document.getElementById("home").className = "";
     if (localStorage.getItem("location") != " ") {
       let loc = localStorage.getItem("location")
       console.log(loc);
