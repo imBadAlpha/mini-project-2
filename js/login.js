@@ -46,13 +46,14 @@ function validateForm() {
     localStorage.setItem("password", password);
     window.location.replace("listing.html");
   } else {
-    localStorage.setItem("username", "");
-    localStorage.setItem("password", "");
+    localStorage.setItem("username", " ");
+    localStorage.setItem("password", " ");
   }
 }
 
 function checkLogin() {
   console.log("Hello");
+  console.log(localStorage.getItem("usr"));
   if (
     localStorage.getItem("username") != "" &&
     localStorage.getItem("password") != ""
