@@ -147,9 +147,9 @@ function validateForm() {
     localStorage.clear();
     let username = document.forms["myForm"]["email"].value;
     localStorage.setItem("usr", username);
-    localStorage.setItem("username", "" )
+    localStorage.setItem("usernam", "" )
     let password = document.forms["myForm"]["password"].value;
-    localStorage.setItem("password", "" )
+    localStorage.setItem("passwor", "" )
     localStorage.setItem("pw", password);
     let firstname = document.forms["myForm"]["firstname"].value;
     localStorage.setItem("firstname", firstname);

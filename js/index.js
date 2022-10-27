@@ -1,9 +1,9 @@
 function checkLogin() {
   if (
-    localStorage.getItem("username") != "" &&
-    localStorage.getItem("password") != ""
+    localStorage.getItem("usernam") != "" &&
+    localStorage.getItem("passwor") != ""
   ) {
-    console.log(localStorage.getItem("username"));
+    console.log(localStorage.getItem("usernam"));
     window.location.replace("listing.html");
   }
 }

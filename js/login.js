@@ -42,13 +42,13 @@ function validateForm() {
 
   if (usernameChecked && pwChecked) {
     alert("Login Successful!");
-    localStorage.setItem("username", username);
-    localStorage.setItem("password", password);
+    localStorage.setItem("usernam", username);
+    localStorage.setItem("passwor", password);
     localStorage.setItem("location", "")
     window.location.replace("listing.html");
   } else {
-    localStorage.setItem("username", " ");
-    localStorage.setItem("password", " ");
+    localStorage.setItem("usernam", "");
+    localStorage.setItem("passwor", "");
   }
 }
 
@@ -56,10 +56,10 @@ function checkLogin() {
   console.log("Hello");
   console.log(localStorage.getItem("usr"));
   if (
-    localStorage.getItem("username") != "" &&
-    localStorage.getItem("password") != ""
+    localStorage.getItem("usernam") != "" &&
+    localStorage.getItem("passwor") != ""
   ) {
-    console.log(localStorage.getItem("username"));
+    console.log(localStorage.getItem("usernam"));
     window.location.replace("listing.html");
   }
 }

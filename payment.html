@@ -18,6 +18,11 @@
       $(function() {
         $('[data-toggle="tooltip"]').tooltip()
       })
+
+      function confirmPayment() {
+        alert("Payment Confirmed!")
+        window.location.replace("listing.html");
+      }
     </script>
     <style>
       .home{
@@ -179,7 +184,7 @@
                             </div>
                           </div>
                           <div class="card-footer">
-                            <button type="button" class="subscribe btn btn-primary btn-block shadow-sm"> Confirm Payment </button>
+                            <button type="button" class="subscribe btn btn-primary btn-block shadow-sm" onclick="confirmPayment()"> Confirm Payment </button>
                         </form>
                       </div>
                     </div>
@@ -222,7 +227,7 @@
                       </div>
                       <div class="form-group">
                         <p>
-                          <button type="button" class="btn btn-primary ">
+                          <button type="button" class="btn btn-primary " >
                             <i class="fas fa-mobile-alt mr-2"></i> Proceed Payment </button>
                         </p>
                       </div>
